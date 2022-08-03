@@ -29,7 +29,8 @@ describe('API Validation CRUD', ()=>{
             console.log(newPerson);
         });
 
-        it('Verify all properties',  async function() {
+        it('Verify all properties when a new contract is ceated',  async function() {
+            let result = await request.postRequest(endpoints.baseUrl, '/Contracts', postBody);
             expect(result.body).to.have.property('id').which.is.a('Number');
             expect(result.body).to.have.property('name').which.is.a('String');
             expect(result.body).to.have.property('country').which.is.a('String');
@@ -39,15 +40,20 @@ describe('API Validation CRUD', ()=>{
         });
     });
     describe('PUT request', ()=>{
-        it('PUT request', ()=>{
-
+        let putBody = JSON.stringify({
+            name: 'Kavitha Updated',
+            country: 'Russia'
+        });
+        it('Should be update a specific contract by id', async function() {
+            let result = await request.putRequest(endpoints.baseUrl, '/Contracts/4', putBody);
+            expect(result.statusCode).to.be.equal(200);
         });
     });
 
     describe('DELETE request', ()=>{
-        it('DELETE request', ()=>{
-
+        it('Should be delete a specific contract by id', async function() {
+            let result = await request.deleteRequest(endpoints.baseUrl, '/Contracts/4');
+            expect(result.statusCode).to.be.equal(200);
         });
     });
-
-})
+});

@@ -5,8 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "npx mocha ./test/test.spec.js",
-    "test:report":"npx mocha ./test/test.spec.js --reporter mochawesome"
+    "test:report": "npx mocha --spec ./test/test.spec.js --reporter mochawesome"
   },
+  "keywords": [
+    "mochawesome",
+    "mocha",
+    "reporter",
+    "json",
+    "react",
+    "report generator"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/engaudy/API-Testing-Framework.git"
@@ -21,7 +29,6 @@
     "chai": "^4.3.6",
     "mocha": "^10.0.0",
     "mochawesome": "^7.1.3",
-    "nock": "^13.2.9",
     "supertest": "^6.2.4"
   }
 }
